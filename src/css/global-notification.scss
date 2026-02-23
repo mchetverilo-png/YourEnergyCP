@@ -1,20 +1,30 @@
 .global-notification {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
   width: 100%;
+  max-width: 375px;
   z-index: 9999;
   display: flex;
   justify-content: center;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-lg) 20px;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateY(-50%, -100%);
   transition: opacity 0.3s ease, transform 0.3s ease;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: var(--spacing-lg) 32px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    max-width: 1440px;
+  }
 
   &--visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
     pointer-events: auto;
   }
 

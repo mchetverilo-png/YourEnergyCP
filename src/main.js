@@ -4,6 +4,7 @@ import {
   initSearch,
   initCardsEventListener,
   initHashtags,
+  switchToFavorites,
 } from './js/exercises.js';
 import { initExerciseModal, closeExerciseModal } from './js/exercise-modal.js';
 import { initRatingModal, closeRatingModal } from './js/rating-modal.js';
@@ -27,27 +28,19 @@ displayQuote();
 document.addEventListener('DOMContentLoaded', () => {
   initExerciseModal();
   initRatingModal();
-
   initGlobalNotification();
-
-  initHeader();
-
-  initSearch();
-
-  initCardsEventListener();
-
-  initHashtags();
-
+  initHeader();  
   initFooterSubscription();
 
-  loadExerciseCards('Muscles', 1);
+  const isFavoritesPage = window.location.pathname.includes('favorites.html');
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closeExerciseModal();
-      closeRatingModal();
-    }
-  });
+  if (isFavoritesPage) {    
+    switchToFavorites(); 
+  } else {
+  initSearch();
+  initCardsEventListener();
+  initHashtags();
+  loadExerciseCards('Muscles', 1);
 
   const filterButtons = document.querySelectorAll(
     '.exercises__content__header-filters-item'
@@ -66,5 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       loadExerciseCards(filter, 1);
     });
-  });  
+  });
+}  
 });

@@ -1,4 +1,4 @@
-<div class="exercise-modal" id="js-exercise-modal">
+<section class="exercise-modal" id="js-exercise-modal">
   <div class="exercise-modal__overlay"></div>
   <div class="exercise-modal__content">
     <button class="exercise-modal__close" id="js-exercise-modal-close" aria-label="Close modal">
@@ -46,7 +46,6 @@
             </svg>
           </div>
         </div>
-
         <div class="exercise-modal__details">
           <div class="exercise-modal__detail-item">
             <span class="exercise-modal__detail-label">Target</span>
@@ -64,13 +63,14 @@
             <span class="exercise-modal__detail-label">Popular</span>
             <span class="exercise-modal__detail-value" id="js-exercise-modal-popular"></span>
           </div>
-        </div>
-
-        <div class="exercise-modal__calories">
-          <span class="exercise-modal__calories-value" id="js-exercise-modal-calories"></span>
-          <span class="exercise-modal__calories-time" id="js-exercise-modal-time"></span>
-        </div>
-
+          <div class="exercise-modal__detail-item">
+            <span class="exercise-modal__detail-label">Burned Calories</span>
+            <div class="exercise-modal__calories">
+              <span class="exercise-modal__calories-value" id="js-exercise-modal-calories"></span><span class="exercise-modal__calories-time" id="js-exercise-modal-time"></span>
+            </div>            
+          </div>
+        </div>        
+        
         <p class="exercise-modal__description" id="js-exercise-modal-description"></p>
 
         <div class="exercise-modal__actions">
@@ -89,4 +89,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

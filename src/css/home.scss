@@ -1,12 +1,8 @@
 .home__content {
-  padding: var(--spacing-xl);
-  padding-bottom: var(--spacing-xl);
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 0;
   background-color: var(--color-bg-light);
+  margin-top: 100px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     display: flex;
     flex-direction: column;
   }
@@ -15,14 +11,19 @@
 .home__main {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 32px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     display: contents; 
+  }
+  @media (max-width: 767px) {
+    margin-bottom: 20px; 
   }
 }
 
 .home__title {
-  font-size: 72px;
+  font-size: 74px;
+  line-height: 74px;
   font-weight: 400;
   color: var(--color-dark);
   margin-block: 0;  
@@ -31,29 +32,50 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    img {
+      @media (max-width: 767px) {
+        padding-top: 10px;
+        padding-left: 10px;
+        width: 38px;
+        height: 38px;
+      }
+    }    
   }
 
   &-italic {    
     font-style: italic;
   }
-  @media (max-width: 1024px) {
-    font-size: 56px;
+  @media (max-width: 1439px) {
+    letter-spacing: -2%;
   }
-  @media (max-width: 481px) {
-    font-size: 40px;
+  @media (max-width: 767px) {
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: -2%;
   }
 }
 
 .home__description {
   font-size: 18px;
-  color: var(--color-dark);  
-  @media (max-width: 1024px) {
+  line-height: 24px;
+  letter-spacing: -2%;
+  width: 528px;
+  color: var(--color-dark);
+  margin-top: 20px; 
+  @media (max-width: 1439px) {
     margin-bottom: var(--spacing-lg);
+  }
+  @media (max-width: 767px) {
+    width: 335px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -2%;
   }
 }
 
 .home__text {
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     order: 1;
   }
 }
@@ -64,7 +86,7 @@
   align-items: flex-end;
   background-size: cover;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     display: contents; 
   }
 }
@@ -76,7 +98,7 @@
     object-fit: cover;
     border-radius: 20px;
   }
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     display: none;
   }
 }
@@ -89,7 +111,7 @@
   margin-top: var(--spacing-lg);
   padding: 0;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     display: flex;
     flex-wrap: wrap; 
     justify-content: flex-end;    
@@ -99,7 +121,7 @@
     width: 100%;
   }
 
-  @media (max-width: 481px) {
+  @media (max-width: 767px) {
     justify-content: center;
   }
 
@@ -111,12 +133,12 @@
     text-align: center;
     border: 1px solid var(--color-dark);    
 
-    @media(max-width: 1024px) {      
+    @media(max-width: 1439px) {      
       padding: 6px 12px;
       font-size: 14px;
     }
 
-    @media(max-width: 481px) {
+    @media(max-width: 767px) {
         font-size: 11px;
     }
 
@@ -137,9 +159,13 @@
 .home__hero {
   margin-bottom: 0;  
   margin: 0 auto;
-  display: block;  
+  display: block;
+  overflow: hidden;
+  border-radius: 30px;
+  width: 100%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
+    max-width: 704px;
     order: 2;    
     margin-bottom: 0;
     height: auto;
@@ -148,28 +174,31 @@
 
   img {
     width: 100%;
-    max-height: 600px;
+    max-height: 350px;
     border-radius: 60px;
     margin-top: var(--spacing-xs); 
     object-fit: cover;    
-    object-position: center;
-    aspect-ratio: 21 / 9;
+    object-position: 50% 32%;
+    transform: scale(1.1);
+    aspect-ratio: 16 / 9;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1439px) {
     img {
       margin-top: 0.2rem;
-      width: 100%;    
-      height: auto;
-      aspect-ratio: 16 / 9;      
+      width: 704px;    
+      height: 550px;
+      transform: scale(1.05);
+      aspect-ratio: 16 / 9;   
     }
   }
   
-  @media (max-width: 481px) {
+  @media (max-width: 767px) {
     img {
       margin-top: 0.15rem;
       width: 100%;      
-      height: auto;
+      height: 460px;
+      transform: scale(1.15);
       aspect-ratio: 4 / 3;
       border-radius: 30px;
     }

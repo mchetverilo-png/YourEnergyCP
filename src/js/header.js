@@ -1,6 +1,6 @@
 import { switchToHome, switchToFavorites } from './exercises.js';
 
-let currentPage = 'home';
+let currentPage = window.location.pathname.includes('favorites.html') ? 'favorites' : 'home';
 
 let mobileMenu = null;
 let burgerButton = null;
@@ -59,9 +59,17 @@ function closeMobileMenu() {
 }
 
 export function initHeader() {  
-  const navLinks = document.querySelectorAll('.header__nav-link');
-
-  navLinks.forEach(link => {
+  const navLinks = document.querySelectorAll('.header__nav-link');  
+  const mobileNavLinks = document.querySelectorAll('.mobile-menu__nav-link');
+  
+  [...navLinks, ...mobileNavLinks].forEach(link => {
+    if (link.getAttribute('data-page') === currentPage) {
+      link.classList.add(link.classList.contains('header__nav-link') 
+        ? 'header__nav-link--active' 
+        : 'mobile-menu__nav-link--active');
+    }
+  });
+  /*navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const page = link.getAttribute('data-page');
@@ -69,7 +77,7 @@ export function initHeader() {
         switchPage(page);
       }
     });
-  });
+  });*/
   
   mobileMenu = document.querySelector('.mobile-menu');
   burgerButton = document.querySelector('.header__burger');
@@ -83,9 +91,17 @@ export function initHeader() {
   if (closeButton) {
     closeButton.addEventListener('click', closeMobileMenu);
   }
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+        closeMobileMenu();
+      }
+    });
+  }
   
-  const mobileNavLinks = document.querySelectorAll('.mobile-menu__nav-link');
-  mobileNavLinks.forEach(link => {
+  
+  /*mobileNavLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const page = link.getAttribute('data-page');
@@ -94,7 +110,7 @@ export function initHeader() {
         closeMobileMenu();
       }
     });
-  });
+  });*/
   
   if (mobileMenu) {
     mobileMenu.addEventListener('click', e => {

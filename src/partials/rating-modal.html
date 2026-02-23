@@ -20,8 +20,9 @@
         </button>
       </div>
 
-      <div class="rating-modal__rating">
-        <span class="rating-modal__rating-value" id="js-rating-modal-value">0.0</span>
+      <div class="rating-modal__rating-container">
+        <div class="rating-modal__rating-group">
+          <span class="rating-modal__rating-value" id="js-rating-modal-value">0.0</span>
         <div class="rating-modal__rating-stars" id="js-rating-modal-stars">
           <button class="rating-modal__star" data-rating="1" aria-label="1 star">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,17 +55,15 @@
             </svg>
           </button>
         </div>
+        <div class="rating-modal__rating-error" id="js-rating-error"></div>
+        </div>
       </div>
 
-      <form class="rating-modal__form" id="js-rating-modal-form">
-        <div class="rating-modal__field">
-          <div class="rating-modal__rating-error" id="js-rating-error"></div>
-        </div>
-
+      <form class="rating-modal__form" id="js-rating-modal-form" novalidate>
         <div class="rating-modal__field">
           <input type="email" class="rating-modal__input" id="js-rating-modal-email" placeholder="Email">
           <div class="rating-modal__error" id="js-email-error"></div>
-        </div>
+        </div>        
 
         <div class="rating-modal__field">
           <textarea class="rating-modal__textarea" id="js-rating-modal-comment" placeholder="Your comment"

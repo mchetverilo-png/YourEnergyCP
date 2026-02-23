@@ -1,4 +1,5 @@
 import { showGlobalNotification } from './global-notification.js';
+import { openExerciseModal } from './exercise-modal.js';
 import {
   showFieldError,
   hideFieldError,
@@ -40,13 +41,26 @@ function hideServerMessage() {
   );
 }
 
+function handleRatingEscKey(event) {
+  if (event.key === 'Escape') {
+    closeRatingModal();
+  }
+}
+
 function closeRatingModal() {
   const modal = document.getElementById('js-rating-modal');
   if (!modal) return;
 
   modal.classList.remove('rating-modal--open');
-  document.body.style.overflow = '';
-  currentExerciseIdForRating = null;
+
+  const exerciseModal = document.getElementById('js-exercise-modal');
+  const isExerciseModalOpen = exerciseModal && exerciseModal.classList.contains('exercise-modal--open');
+
+  if (!isExerciseModalOpen) {
+    document.body.style.overflow = '';
+  }
+  document.removeEventListener('keydown', handleRatingEscKey);
+  //currentExerciseIdForRating = null;
  
   const emailInput = document.getElementById('js-rating-modal-email');
   const emailError = document.getElementById('js-email-error');
@@ -97,6 +111,8 @@ export function openRatingModal(exerciseId) {
 
   modal.classList.add('rating-modal--open');
   document.body.style.overflow = 'hidden';
+
+  document.addEventListener('keydown', handleRatingEscKey);
 }
 
 export { closeRatingModal };
@@ -244,11 +260,12 @@ export function initRatingModal() {
       if (!email) {
         showFieldError(emailInput, emailError, 'Please enter your email');
         hasErrors = true;
-      } else if (!validateEmail(email)) {
+      } 
+      else if (!validateEmail(email)) {
         showFieldError(
           emailInput,
           emailError,
-          'Please enter a valid email address'
+          'Please enter a valid email address (e.g. name@gmail.com)'
         );
         hasErrors = true;
       } else {
@@ -303,6 +320,9 @@ export function initRatingModal() {
               `Thank you, your review for exercise ${exerciseName} has been submitted`,
               'success'
             );
+            if (currentExerciseIdForRating) {
+              openExerciseModal(currentExerciseIdForRating);
+            }
           })
           .catch(error => {
             const errorMessage =
