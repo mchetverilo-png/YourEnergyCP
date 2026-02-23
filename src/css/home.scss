@@ -45,21 +45,16 @@
 
   &-italic {    
     font-style: italic;
-  }
-  @media (max-width: 1439px) {
-    letter-spacing: -2%;
-  }
+  }  
   @media (max-width: 767px) {
     font-size: 38px;
     line-height: 44px;
-    letter-spacing: -2%;
   }
 }
 
 .home__description {
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: -2%;
   width: 528px;
   color: var(--color-dark);
   margin-top: 20px; 
@@ -70,7 +65,6 @@
     width: 335px;
     font-size: 14px;
     line-height: 18px;
-    letter-spacing: -2%;
   }
 }
 
