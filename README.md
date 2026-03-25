@@ -30,7 +30,7 @@
 .editorconfig. 📦 Встановлення та запуск Клонуйте репозиторій:
 
 ```Bash
-git clone https://github.com/your-username/YourEnergyCourseProject.git
+git clone https://github.com/mchetverilo-png/YourEnergyCP.git
 ```
 
 Встановіть залежності:
